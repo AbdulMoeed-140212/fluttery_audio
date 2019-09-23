@@ -3,6 +3,7 @@ package io.fluttery.flutteryaudio;
 import android.media.MediaPlayer;
 import android.os.Handler;
 import android.os.HandlerThread;
+import android.os.Looper;
 import android.support.annotation.NonNull;
 import android.util.Log;
 
@@ -37,7 +38,7 @@ public class AudioPlayer {
 
         HandlerThread handlerThread = new HandlerThread("AudioPlayer");
         handlerThread.start();
-        playbackPollHandler = new Handler(handlerThread.getLooper());
+        playbackPollHandler = new Handler(Looper.getMainLooper());
 
         MediaPlayerCallbacks mediaPlayerCallbacks = new MediaPlayerCallbacks();
         mediaPlayer.setOnPreparedListener(mediaPlayerCallbacks);
